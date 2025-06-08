@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>P2P WhatsApp Clone - Enhanced Chat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" role="application" aria-label="P2P WhatsApp Clone Chat Application">
+    <header>
+      <div class="contact-info">
+        <i class="fas fa-user"></i>
+        <span>P2P WhatsApp Clone</span>
+      </div>
+      <div class="header-icons">
+        <i class="fas fa-search" title="Search"></i>
+        <i class="fas fa-ellipsis-v" title="More options"></i>
+        <button id="darkModeToggle" title="Toggle dark mode" style="background:none;border:none;cursor:pointer;color:white;font-size:1.2em;">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="changeNameBtn" title="Change your name" style="background:none;border:none;cursor:pointer;color:white;font-size:1.2em;">
+          <i class="fas fa-user-edit"></i>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section id="connectionPanel" aria-label="Connection panel for signaling">
+        <h2>Connection Setup</h2>
+        <button id="createOfferBtn" aria-label="Create Connection Offer">Create Offer</button>
+        <label for="localSDP">Local SDP (copy to peer):</label>
+        <div style="display:flex;gap:8px;">
+          <textarea id="localSDP" readonly aria-readonly="true" placeholder="Your SDP will appear here" style="flex:1"></textarea>
+          <button type="button" id="copySDPBtn" title="Copy SDP" style="height:40px;"><i class="fas fa-copy"></i></button>
+        </div>
+        <label for="remoteSDP">Paste Remote SDP below:</label>
+        <div style="display:flex;gap:8px;">
+          <textarea id="remoteSDP" aria-label="Paste remote SDP here" style="flex:1"></textarea>
+          <button type="button" id="pasteSDPBtn" title="Paste SDP" style="height:40px;"><i class="fas fa-paste"></i></button>
+        </div>
+        <button id="acceptOfferBtn" aria-label="Accept Remote SDP">Accept Remote SDP</button>
+        <div id="info" role="status" aria-live="polite"></div>
+      </section>
+      <section id="chatPanel" aria-label="Chat panel" hidden>
+        <div class="chat-header">
+          <span class="contact-name" id="chatPeerName">Peer Chat</span>
+          <div class="header-icons">
+            <i class="fas fa-video" title="Video call"></i>
+            <i class="fas fa-phone" title="Voice call"></i>
+            <i class="fas fa-ellipsis-v" title="More options"></i>
+          </div>
+        </div>
+        <div id="pinnedBanner" style="display:none; background:#fff8b7; padding:10px; border-left: 4px solid #ffc107;">
+  <strong>Pinned:</strong> <span id="pinnedText"></span>
+  <button onclick="unpinDisplayed()" style="float:right; background:none; border:none; cursor:pointer;">✖</button>
+</div>
+<div id="messages" aria-label="Messages area" role="log" aria-live="polite" aria-atomic="false" tabindex="0"></div>
+        <div id="typingIndicator" style="min-height:22px;color:#888;font-size:0.95em;padding:0 18px 4px 18px;"></div>
+        <form id="chatForm" class="input-area" aria-label="Message input form">
+          <i id="emojiBtn" class="fas fa-smile" title="Emoji"></i>
+          <label id="fileInputLabel" for="fileInput" title="Send Image/Video/Audio" class="fas fa-paperclip"></label>
+          <input type="file" id="fileInput" accept="image/*,video/*,audio/*" multiple aria-label="Choose image, video, or audio files to send" />
+          <textarea id="messageInput" rows="1" placeholder="Type a message" aria-label="Message input"></textarea>
+          <button type="submit" id="sendBtn" aria-label="Send message" disabled><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script src="app_updated_with_react.js"></script>
+</body>
+</html>
